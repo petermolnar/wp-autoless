@@ -37,7 +37,7 @@ function compile () {
 
 	foreach ( $lessfiles as $lessfile ) {
 		$lessmtime = filemtime( $lessfile );
-		$cssfile = str_replace( '.less', '.css', $lessfile );
+		$cssfile = preg_replace( '/\.less$/i', '.css', $lessfile );
 		$cssmtime = file_exists ( $cssfile ) ? filemtime( $cssfile ) : '0';
 
 		if ( $cssmtime < $lessmtime ) {
